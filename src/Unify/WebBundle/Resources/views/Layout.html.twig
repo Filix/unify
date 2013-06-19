@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{%block title%}Unify Med{%endblock%}</title>
+        <meta name="description" content="{% block description %}Nanjing Unify Medical Equipment Co.,Ltd{% endblock %}" />
+        <meta name="keywords" content="{% block keywords %}Nanjing Unify Medical Equipment Co.,Ltd{% endblock %}" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        {% block css %}
+            <link rel="shortcut icon" href="{# asset('/bundles/zuoweb/images/favicon.ico') #}" />  
+            <link rel="icon" href="{# asset('/bundles/zuoweb/images/favicon.gif') #}" type="image/gif" />
+            <link rel="stylesheet" href="{{ asset('/bundles/unifyweb/css/reset.css') }}" type="text/css" media="all" />
+            <link rel="stylesheet" href="{{ asset('/bundles/unifyweb/css/layout.css') }}" type="text/css" media="all" />
+            <link rel="stylesheet" href="{{ asset('/bundles/unifyweb/css/style.css') }}" type="text/css" media="all" />
+            {#% stylesheets
+                '@Unify/Resources/public/css/reset.css'
+                '@Unify/Resources/public/css/layout.css'
+                '@Unify/Resources/public/css/style.css'
+                filter='?yui_css'
+            %#}
+            {#% endstylesheets %#}
+        {% endblock %}
+        <link rel="stylesheet" href="css/reset.css" type="text/css" media="all">
+        <link rel="stylesheet" href="css/layout.css" type="text/css" media="all">
+        <link rel="stylesheet" href="css/style.css" type="text/css" media="all">
+    </head>
+    <body id="page1">
+        <div class="wrap">
+            <!-- header -->
+            <div class="header">
+                <div class="container">
+                    <h1><a href="index.html">Medical Center</a></h1>
+                    <div class="nav"> 
+                        <ul>
+                            <li class="m1"><a href="{{ path('homepage') }}" class="active"><span><b>Home</b></span></a></li>   
+                            <li class="m3"><a href="{{ path('about') }}"><span><b>About us</b></span></a></li>
+                            <li class="m2"><a href="{{ path('news_list') }}"><span><b>News</b></span></a></li>
+                            <li class="m4"><a href="{{ path('product_list') }}"><span><b>Products</b></span></a></li>
+                            <li class="m5 last"><a href="{{ path('contact') }}"><span><b>Contacts</b></span></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            {% block main %}{% endblock %}
+            
+        </div>
+        <!-- footer -->
+        <div class="footer">
+            <div class="container">
+                <div class="cont-bot"></div>
+                <div class="social">
+                    <div id="face"><a href="http://www.facebook.com/group.php?gid=129632973725217&v=wall"><img src="images/facebook.png" alt="" /></a></div>
+                    <div id="twitter"><a href="http://twitter.com/#!/wflashtemplate/"><img src="images/twitter.png" alt="" /></a></div>
+                    <div id="youtube"><a href="http://www.youtube.com/user/WebFlashTemplateCom"><img src="images/youtube.png" alt="" /></a></div>
+                </div>
+                <div class="inside"> Copyright &copy; 2011. All right reserved. Image from BigStockPhoto.com &copy; Kurhan<br>
+                    More Templates <a href="http://www.cssmoban.com/" class="visit" target="_blank" title="模板之家">模板之家</a> Collect from <a href="http://www.cssmoban.com/" class="visit"title="网页模板" target="_blank">网页模板</a></div>
+            </div>
+        </div>
+
+    </body>
+</html>

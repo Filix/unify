@@ -1,5 +1,6 @@
 unify_web:
-    resource: "@UnifyWebBundle/Resources/config/routing.yml"
+    resource: "@UnifyWebBundle/Controller/"
+    type:     annotation
     prefix:   /
 
 # Internal routing configuration to handle ESI
