@@ -1,0 +1,15 @@
+parameters:
+#    unify_backend.example.class: Unify\BackendBundle\Example
+
+services:
+
+#基础信息
+    unify.admin.category:
+        class: Unify\BackendBundle\Admin\CategoryAdmin
+        tags: [{ name: sonata.admin, manager_type: orm, label: 产品分类 }]
+        arguments: ["", Unify\WebBundle\Entity\Category, SonataAdminBundle:CRUD]
+    
+    unify.admin.article:
+        class: Unify\BackendBundle\Admin\ArticleAdmin
+        tags: [{ name: sonata.admin, manager_type: orm, label: 文章 }]
+        arguments: ["", Unify\WebBundle\Entity\Article, SonataAdminBundle:CRUD]

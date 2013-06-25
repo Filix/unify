@@ -1,0 +1,15 @@
+<!-- aside -->
+   <div class="aside">
+      <div class="inside">
+         <h2>Latest News</h2>
+         <ul class="news">
+            {% for n in news %}
+            <li>
+                <a href="{{ path('news', {'slug': n.slug }) }}">{{ n.getCreatedAt.format('Y-m-d') }}</a>
+                <strong>{{ n.title }}</strong>
+                {{ n.content }}
+            </li>
+            {% endfor %}
+         </ul>
+      </div>
+   </div>

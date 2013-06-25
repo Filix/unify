@@ -1,0 +1,39 @@
+{# default Sliding pagination control implementation #}
+{% if pageCount > 1 %}
+    <p class="page-number">
+        {%  set _first = pagesInRange.0 %}
+        {% if previous is defined %}
+            <a class="page" href="{{ path(route, query|merge({(pageParameterName): previous})) }}">上一页</a>
+        {% endif %}
+
+        {% if first is defined and _first > first %}
+            <a class="page" href="{{ path(route, query|merge({(pageParameterName): first})) }}">{{ first }}</a>
+        {% endif %}
+
+        {% if _first > first + 1 %}
+            <span class="page">...</span>
+        {% endif %}
+
+        {%  set _last = 0 %}
+        {% for page in pagesInRange %}
+            {% if page != current %}
+                <a class="page" href="{{ path(route, query|merge({(pageParameterName): page})) }}">{{ page }}</a>
+            {% else %}
+                <span class="current">{{ page }}</span>
+            {% endif %}
+            {% set _last = page %}
+        {% endfor %}
+
+        {% if _last + 1 < last %}
+            <span class="page">...</span>
+        {% endif %}
+
+        {% if last is defined and _last < last %}
+            <a class="page" href="{{ path(route, query|merge({(pageParameterName): last})) }}">{{ last }}</a>
+        {% endif %}
+
+        {% if next is defined %}
+            <a class="page" href="{{ path(route, query|merge({(pageParameterName): next})) }}">下一页</a>
+        {% endif %}
+    </p>
+{% endif %}

@@ -1,27 +1,14 @@
 {% extends "UnifyWebBundle::Layout.html.twig" %}
 {% block main %}
 <div class="container">
-   <!-- aside -->
-   <div class="aside">
-      <div class="inside">
-         <h2>Latest News</h2>
-         <ul class="news">
-            <li><a href="#">June 30, 2010</a><strong>Sed ut perspiciatis unde</strong>Omnis iste natus luptatem accusantium doloremque laudantium totamrem.</li>
-            <li><a href="#">June 14, 2010</a><strong>Neque porro quisquam est</strong>Consequuntur magni dolores eos qughi ratione voluptatem sequi.</li>
-            <li><a href="#">May 29, 2010</a><strong>Minima veniam, quis nostrum</strong>Ut enim ad minima veniam, quis nosrum exercitatnem ullam corporis.</li>
-         </ul>
-      </div>
-   </div>
+   {% render "UnifyWebBundle:Widget:latestNews" with {'num': 3} %}
    <!-- content -->
    <div class="section" id="content">
-      <h2>About Your Website</h2>
-      <p class="p2">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-      <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui rationeue porro quisquam est.</p>
-      <h2 class="indent">About Your Team</h2>
-      <ul class="list1">
-         <li><img src="images/2page-img1.jpg"  class="imgb" alt="" /><strong>Team Member One</strong>He is the most important member of your team. Usually this is the person who started the website. Maybe it is worth to write why he has made such a decision and what has inspired him.</li>
-         <li><img src="images/2page-img2.jpg"  class="imgb" alt="" /><strong>Another Team Member</strong>We are completly lost on what he's responsible for, but we hope that you know it ;) We also hope that you will tell it to the rest of the world including us by placing some real text here.</li>
-      </ul>
+      <h2>About Us</h2>
+      <p class="p2">Unify Medical Technology Co., Ltd. was founded in Nanjing, China with the goal to supply medical products with high quality, competitive price and excellent after-sales service.</p>
+      <p>As the leading professional manufacturer & exporter of medical equipment, Unify Medical own a group of very professional technical and sales staff with the high efficiency, who are able to provide the customers complete range of service. Being approved with CE,ISO, Certificate, etc. We have established efficient worldwide network of marketing. In the past 15 years, we have exported our products to more than 120 countries all over the world. </p>
+      <p>Unify Medical product range covers X-ray machines, Ultrasound Scanner, ECG, ICU Equipment, Laboratory Equipment, Optoelectronic Equipment, Reagents, Hospital Furniture and other medical equipments & products. </p>
+      <p>We welcome customers from all over the world visit our website or our company, and we assure you of our best quality products and services with competitive prices.Your cooperation with us will definitely create a win-win situation for both of us.</p>
    </div>
    <div class="clear"></div>
 </div>

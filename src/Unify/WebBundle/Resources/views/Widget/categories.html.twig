@@ -1,0 +1,13 @@
+<!-- aside -->
+   <div class="aside">
+      <div class="inside">
+         <h6>Product Categories</h6>
+         <ul class="news">
+            {% for category in categories %}
+            <li>
+                <strong><a href="{{ path('product_category', {'slug': category.slug }) }}">{{ category.name }}</a></strong>
+            </li>
+            {% endfor %}
+         </ul>
+      </div>
+   </div>

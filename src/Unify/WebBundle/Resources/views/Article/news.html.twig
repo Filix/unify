@@ -1,13 +1,13 @@
 {% extends "UnifyWebBundle::Layout.html.twig" %}
 {% block main %}
 <div class="container">
-   {% render "UnifyWebBundle:Widget:categories" %}
+   {% render "UnifyWebBundle:Widget:latestNews" with {'num': 3} %}
    <!-- content -->
    <div class="section" id="content">
-      <h2>{{ product.title }}</h2>
+      <h2>{{ news.title }}</h2>
       <div class="img-box">
           <img src="/bundles/unifyweb/images/3page-img1.jpg" class="imgb" alt="" />
-          {{ product.content }}
+          {{ news.content }}
       </div>
    </div>
    <div class="clear"></div>

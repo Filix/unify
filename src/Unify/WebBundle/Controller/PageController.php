@@ -5,6 +5,7 @@ namespace Unify\WebBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Unify\WebBundle\Entity\Message;
 
 class PageController extends Controller
 {
@@ -28,10 +29,30 @@ class PageController extends Controller
     
     /**
      * @Route("/contact",name="contact")
-     * @Template()
+     * @Template("UnifyWebBundle:Page:contact.html.twig")
      */
     public function contactAction()
     {
-        return $this->render('UnifyWebBundle:Page:contact.html.twig');
+        $message = new Message();
+        
+        $form = $this->createFormBuilder($message)
+                ->add('name', 'text', array('label' => 'Your Name:', 'trim' => true))
+                ->add('email', 'email', array('label' => 'Your Email:', 'trim' => true))
+                ->add('content', 'textarea', array('label' => 'Your Message:', 'trim' => true))
+                ->getForm();
+        
+        if($this->getRequest()->isMethod("POST")){
+            $form->bind($this->getRequest());
+            if($form->isValid()){
+                $em = $this->getDoctrine()->getEntityManager();
+                $em->persist($form->getData());
+                $em->flush();
+                $this->get('session')->getFlashBag()
+                        ->add('notice', 'Success!');
+                return $this->redirect($this->generateUrl('contact'));
+            }
+
+        }
+        return array('form' => $form->createView());
     }
 }

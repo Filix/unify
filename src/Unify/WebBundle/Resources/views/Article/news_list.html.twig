@@ -1,4 +1,19 @@
 {% extends "UnifyWebBundle::Layout.html.twig" %}
 {% block main %}
-<h1>new list</h1>
+<div class="container">
+   {% render "UnifyWebBundle:Widget:categories"  %}
+   <!-- content -->
+   <div class="section" id="content">
+      <ul class="list1">
+         {% for n in news %}
+         <li>
+             <img src="/bundles/unifyweb/images/3page-img1.jpg" class="imgb" alt="">
+             <strong><a href="{{ path('news', {'slug': n.slug}) }}">{{ n.title }}</a></strong>
+             {{ n.content }}
+         </li>
+         {% endfor %}
+      </ul>
+   </div>
+   <div class="clear"></div>
+</div>
 {% endblock %}

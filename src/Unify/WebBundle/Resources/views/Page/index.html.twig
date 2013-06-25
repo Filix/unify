@@ -2,16 +2,7 @@
 {% block main %}
 <div class="container">
     <!-- aside -->
-    <div class="aside">
-        <div class="inside">
-            <h2>Medical News</h2>
-            <ul class="news">
-                <li><a href="#">June 30, 2011</a><br>Duis sed elementum est. Quisque scelerisque felis gravida nisi posuere at vulputate felis scelerisque. Cras a nibh augue. </li>
-                <li><a href="#">June 14, 2011</a><br>Quisque lectus elit, pulvinar euismod blandit aliquet, euismod sit amet nibh. Aenean dapibus, odio eget egestas dapibus, purus velit aliquet leo, at condimentum risus lacus id eros</li>
-                <li><a href="#">May 29, 2011</a><br>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce eget justo at ipsum imperdiet porta. Aenean non purus vel justo blandit vestibulum at in felis.</li>
-            </ul>
-        </div>
-    </div>
+    {% render "UnifyWebBundle:Widget:latestNews" with {'num': 3} %}
     <!-- content -->
     <div class="section" id="content">
         <div class="wrapper">
