@@ -46,8 +46,6 @@ class Article
      * @ORM\Column(type="string", length=100, nullable=true)
      */
     protected $img;
-    
-    protected $category;
 
     public function __construct() {
         $this->setCreatedAt(new \DateTime());
