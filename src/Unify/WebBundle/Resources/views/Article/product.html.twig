@@ -6,7 +6,9 @@
    <div class="section" id="content">
       <h2>{{ product.title }}</h2>
       <div class="img-box">
-          <img src="/bundles/unifyweb/images/3page-img1.jpg" class="imgb" alt="" />
+          {% if news.img %}
+          <img src="{{ news.getImgPath() }}" class="imgb" alt="{{ news.title }}" />
+          {% endif %}
           {{ product.content }}
       </div>
    </div>

@@ -1,6 +1,3 @@
-parameters:
-#    unify_backend.example.class: Unify\BackendBundle\Example
-
 services:
 
 #基础信息
@@ -12,12 +9,12 @@ services:
     unify.admin.article:
         class: Unify\BackendBundle\Admin\ArticleAdmin
         tags: [{ name: sonata.admin, manager_type: orm, label: News }]
-        arguments: ["", Unify\WebBundle\Entity\Article, SonataAdminBundle:CRUD]
+        arguments: ["", Unify\WebBundle\Entity\Article, UnifyBackendBundle:ArticleAdmin]
     
     unify.admin.product:
         class: Unify\BackendBundle\Admin\ProductAdmin
         tags: [{ name: sonata.admin, manager_type: orm, label: Products }]
-        arguments: ["", Unify\WebBundle\Entity\Product, SonataAdminBundle:CRUD]
+        arguments: ["", Unify\WebBundle\Entity\Product, UnifyBackendBundle:ArticleAdmin]
         
     unify.admin.message:
         class: Unify\BackendBundle\Admin\MessageAdmin

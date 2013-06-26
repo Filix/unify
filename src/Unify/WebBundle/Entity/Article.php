@@ -46,6 +46,8 @@ class Article
      * @ORM\Column(type="string", length=100, nullable=true)
      */
     protected $img;
+    
+    protected $old_img;
 
     public function __construct() {
         $this->setCreatedAt(new \DateTime());
@@ -163,6 +165,10 @@ class Article
      */
     public function setImg($img)
     {
+        if($this->old_img == null){
+            $this->old_img = $this->img;
+        }
+        
         $this->img = $img;
     
         return $this;
@@ -176,6 +182,11 @@ class Article
     public function getImg()
     {
         return $this->img;
+    }
+    
+    public function getImgPath()
+    {
+        return '/uploads/news/' . $this->getImg();
     }
 
     /**
@@ -199,6 +210,10 @@ class Article
     public function getType()
     {
         return $this->type;
+    }
+    
+    public function getOldImg(){
+        return $this->old_img;
     }
 
 }

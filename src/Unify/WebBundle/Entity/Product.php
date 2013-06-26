@@ -47,6 +47,7 @@ class Product
      */
     protected $img;
     
+    protected $old_img;
   
    /**
      * @ORM\ManyToOne(targetEntity="Category", inversedBy="products")
@@ -170,9 +171,23 @@ class Product
      */
     public function setImg($img)
     {
+        if($this->old_img == null){
+            $this->old_img = $this->img;
+        }
+        
         $this->img = $img;
     
         return $this;
+    }
+    
+    public function getImgPath()
+    {
+        return '/uploads/products/' . $this->getImg();
+    }
+    
+    public function getOldImg()
+    {
+        return $this->old_img;
     }
 
     /**
