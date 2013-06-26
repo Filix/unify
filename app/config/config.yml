@@ -87,14 +87,25 @@ sonata_admin:
             # display a dashboard block
             - { position: left, type: sonata.admin.block.admin_list }
         groups:
-            Category:
-                label: 产品分类
-                items:
-                    - unify.admin.category   
             Article:
-                label: 文章
+                label: News
                 items:
-                    - unify.admin.article        
+                    - unify.admin.article   
+                    
+            Category:
+                label: Product Categories
+                items:
+                    - unify.admin.category 
+                    
+            Product:
+                label: Product
+                items:
+                    - unify.admin.product 
+            Message:
+                label: Message
+                items:
+                    - unify.admin.message
+                    
             
 knp_paginator:
     page_range: 5                      # default page range used in pagination control

@@ -8,7 +8,8 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Validator\ErrorElement;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
-class ArticleAdmin extends Admin{
+
+class MessageAdmin extends Admin{
     
     public function __construct($code, $class, $baseControllerName) {
         parent::__construct($code, $class, $baseControllerName);
@@ -25,36 +26,27 @@ class ArticleAdmin extends Admin{
     
     protected function configureFormFields(FormMapper $formMapper) {
         $formMapper
-                ->add('title', NULL, array('label' => 'Title', 'required' => true))
-                ->add('slug', NULL, array('label' => 'Slug', 'required' => true))
+                ->add('name', NULL, array('label' => 'Name', 'required' => true))
+                ->add('email', NULL, array('label' => 'Email', 'required' => true))
                 ->add('content', NULL, array('label' => 'Content', 'required' => true))
-            ;
+                ;
     }
     
     protected function configureDatagridFilters(DatagridMapper $datagridMapper) {
         $datagridMapper
-                ->add('slug')
-                ->add('title')
+                ->add('name')
+                ->add('email')
                 ->add('content')
-                ->add('type')
-                ->add('created_at')
+                
         ;
     }
 
     protected function configureListFields(ListMapper $listMapper) {
-        $query = $this->getModelManager()
-            ->getEntityManager('Unify\WebBundle\Entity\Article')
-            ->createQueryBuilder()
-            ->select("a")
-            ->from("UnifyWebBundle:Article","a")
-            ->where("a.type=:type")
-            ->setParameter(':type',  \Unify\WebBundle\Entity\Article::$NEWS_TYPE);
         $listMapper
                 ->addIdentifier('id')
-                ->add('slug')
-                ->add('title')
+                ->add('name')
+                ->add('email')
                 ->add('created_at')
-                ->add('type', null, array('query_builder' => $query))
         ;
     }
 }

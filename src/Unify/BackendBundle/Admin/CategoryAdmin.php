@@ -17,7 +17,7 @@ class CategoryAdmin extends Admin{
             $this->datagridValues = array(
                 '_page' => 1,
                 '_sort_order' => 'desc', // sort direction
-                '_sort_by' => 'order', // field name
+                '_sort_by' => 'show_order', // field name
                 '_per_page'=> 25 
             );
         }
@@ -27,7 +27,7 @@ class CategoryAdmin extends Admin{
         $formMapper
                 ->add('name', NULL, array('label' => 'Name', 'required' => true))
                 ->add('slug', NULL, array('label' => 'Slug', 'required' => true))
-                ->add('order', NULL, array('label' => 'Order', 'required' => true));
+                ->add('show_order', NULL, array('label' => 'Order', 'required' => true));
     }
     
     protected function configureDatagridFilters(DatagridMapper $datagridMapper) {
@@ -43,7 +43,7 @@ class CategoryAdmin extends Admin{
                 ->addIdentifier('id')
                 ->add("name")
                 ->add('slug')
-                ->add('order');
+                ->add('show_order');
     }
 }
 

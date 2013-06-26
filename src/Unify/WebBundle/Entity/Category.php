@@ -34,12 +34,12 @@ class Category
      * @ORM\Column(type="integer", nullable=false)
      * @ORM\OrderBy({"order" = "DESC"})
      */
-    protected $order = 0;
+    protected $show_order = 0;
     
     /**
-     * @ORM\OneToMany(targetEntity="Article", mappedBy="category")
+     * @ORM\OneToMany(targetEntity="Product", mappedBy="category")
      */
-    protected $articles;
+    protected $products;
     /**
      * Constructor
      */
@@ -89,6 +89,8 @@ class Category
      */
     public function setSlug($slug)
     {
+        $slug = strtolower(trim($slug));
+        $slug = str_replace(array(' '), array('-'), $slug);
         $this->slug = $slug;
     
         return $this;
@@ -105,58 +107,62 @@ class Category
     }
 
     /**
-     * Set order
+     * Add products
      *
-     * @param integer $order
+     * @param \Unify\WebBundle\Entity\Product $products
      * @return Category
      */
-    public function setOrder($order)
+    public function addProduct(\Unify\WebBundle\Entity\Product $products)
     {
-        $this->order = $order;
+        $this->products[] = $products;
     
         return $this;
     }
 
     /**
-     * Get order
+     * Remove products
      *
-     * @return integer 
+     * @param \Unify\WebBundle\Entity\Product $products
      */
-    public function getOrder()
+    public function removeProduct(\Unify\WebBundle\Entity\Product $products)
     {
-        return $this->order;
+        $this->products->removeElement($products);
     }
 
     /**
-     * Add articles
-     *
-     * @param \Unify\WebBundle\Entity\Article $articles
-     * @return Category
-     */
-    public function addArticle(\Unify\WebBundle\Entity\Article $articles)
-    {
-        $this->articles[] = $articles;
-    
-        return $this;
-    }
-
-    /**
-     * Remove articles
-     *
-     * @param \Unify\WebBundle\Entity\Article $articles
-     */
-    public function removeArticle(\Unify\WebBundle\Entity\Article $articles)
-    {
-        $this->articles->removeElement($articles);
-    }
-
-    /**
-     * Get articles
+     * Get products
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getArticles()
+    public function getProducts()
     {
-        return $this->articles;
+        return $this->products;
+    }
+
+    /**
+     * Set show_order
+     *
+     * @param integer $showOrder
+     * @return Category
+     */
+    public function setShowOrder($showOrder)
+    {
+        $this->show_order = $showOrder;
+    
+        return $this;
+    }
+
+    /**
+     * Get show_order
+     *
+     * @return integer 
+     */
+    public function getShowOrder()
+    {
+        return $this->show_order;
+    }
+    
+    public function __toString() {
+        return $this->getName();
     }
 }

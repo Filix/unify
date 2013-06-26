@@ -6,10 +6,20 @@ services:
 #基础信息
     unify.admin.category:
         class: Unify\BackendBundle\Admin\CategoryAdmin
-        tags: [{ name: sonata.admin, manager_type: orm, label: 产品分类 }]
+        tags: [{ name: sonata.admin, manager_type: orm, label: Product Categories }]
         arguments: ["", Unify\WebBundle\Entity\Category, SonataAdminBundle:CRUD]
     
     unify.admin.article:
         class: Unify\BackendBundle\Admin\ArticleAdmin
-        tags: [{ name: sonata.admin, manager_type: orm, label: 文章 }]
+        tags: [{ name: sonata.admin, manager_type: orm, label: News }]
         arguments: ["", Unify\WebBundle\Entity\Article, SonataAdminBundle:CRUD]
+    
+    unify.admin.product:
+        class: Unify\BackendBundle\Admin\ProductAdmin
+        tags: [{ name: sonata.admin, manager_type: orm, label: Products }]
+        arguments: ["", Unify\WebBundle\Entity\Product, SonataAdminBundle:CRUD]
+        
+    unify.admin.message:
+        class: Unify\BackendBundle\Admin\MessageAdmin
+        tags: [{ name: sonata.admin, manager_type: orm, label: Messages }]
+        arguments: ["", Unify\WebBundle\Entity\Message, SonataAdminBundle:CRUD]

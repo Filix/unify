@@ -18,7 +18,7 @@ class ArticleController extends BaseController{
     public function newsListAction($page)
     {
         $news = $this->get('knp_paginator')
-                ->paginate($this->getArticleRepository()->findBy(array('type' => Article::$NEWS_TYPE), array('created_at' => 'desc')),
+                ->paginate($this->getArticleRepository()->findBy(array(), array('created_at' => 'desc')),
                         $page,
                         15);
         return array('news' => $news);
@@ -30,7 +30,7 @@ class ArticleController extends BaseController{
      */
     public function newsAction($slug)
     {
-        if(!$news = $this->getArticleRepository()->findOneBy(array('slug' => strtolower($slug), 'type' => Article::$NEWS_TYPE))){
+        if(!$news = $this->getArticleRepository()->findOneBy(array('slug' => strtolower($slug)))){
             throw new NotFoundHttpException('Sorry! The page does not exist!');
         }
         return array('news' => $news);
@@ -45,7 +45,7 @@ class ArticleController extends BaseController{
         $pagesize = 10;
         $return = array();
         $return['categories'] = $this->get('knp_paginator')
-             ->paginate($this->getCategoryRepository()->findBy(array(), array('order' => 'desc')),
+             ->paginate($this->getCategoryRepository()->findBy(array(), array('show_order' => 'desc')),
                         $page,
                         $pagesize
              );
@@ -65,9 +65,8 @@ class ArticleController extends BaseController{
         
         $return = array();
         $return['products'] = $this->get('knp_paginator')
-                ->paginate($this->getArticleRepository()->findBy(array('category' => $category)),
+                ->paginate($this->getProductRepository()->findBy(array('category' => $category)),
                         $page, 20);
-        $return['categories'] = $this->getCategoryRepository()->findAll();
         return $return;
     }
     
@@ -77,7 +76,7 @@ class ArticleController extends BaseController{
      */
     public function productAction($slug)
     {
-        if(!$product = $this->getArticleRepository()->findOneBy(array('slug' => strtolower($slug), 'type' => Article::$PRODUCT_TYPE))){
+        if(!$product = $this->getProductRepository()->findOneBy(array('slug' => strtolower($slug)))){
             throw new NotFoundHttpException('Sorry! The page does not exist!');
         }
         return array('product' => $product);

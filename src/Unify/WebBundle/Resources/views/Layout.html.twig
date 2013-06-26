@@ -19,16 +19,13 @@
             %#}
             {#% endstylesheets %#}
         {% endblock %}
-        <link rel="stylesheet" href="css/reset.css" type="text/css" media="all">
-        <link rel="stylesheet" href="css/layout.css" type="text/css" media="all">
-        <link rel="stylesheet" href="css/style.css" type="text/css" media="all">
     </head>
     <body id="page1">
         <div class="wrap">
             <!-- header -->
             <div class="header">
                 <div class="container">
-                    <h1><a href="index.html">Medical Center</a></h1>
+                    <h1><a href="{{ path('homepage') }}">Medical Center</a></h1>
                     <div class="nav"> 
                         <ul>
                             <li class="m1"><a href="{{ path('homepage') }}" class="active"><span><b>Home</b></span></a></li>   

@@ -8,39 +8,20 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Validator\ErrorElement;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
-class ArticleAdmin extends Admin{
-    
-    public function __construct($code, $class, $baseControllerName) {
-        parent::__construct($code, $class, $baseControllerName);
 
-        if (!$this->hasRequest()) {
-            $this->datagridValues = array(
-                '_page' => 1,
-                '_sort_order' => 'desc', // sort direction
-                '_sort_by' => 'created_at', // field name
-                '_per_page'=> 25 
-            );
-        }
-    }
+class ProductAdmin extends ArticleAdmin{
+    
+    
     
     protected function configureFormFields(FormMapper $formMapper) {
         $formMapper
                 ->add('title', NULL, array('label' => 'Title', 'required' => true))
                 ->add('slug', NULL, array('label' => 'Slug', 'required' => true))
                 ->add('content', NULL, array('label' => 'Content', 'required' => true))
+                ->add('category', null, array('label' => 'Category', 'required' => true))
             ;
     }
     
-    protected function configureDatagridFilters(DatagridMapper $datagridMapper) {
-        $datagridMapper
-                ->add('slug')
-                ->add('title')
-                ->add('content')
-                ->add('type')
-                ->add('created_at')
-        ;
-    }
-
     protected function configureListFields(ListMapper $listMapper) {
         $query = $this->getModelManager()
             ->getEntityManager('Unify\WebBundle\Entity\Article')
@@ -48,7 +29,8 @@ class ArticleAdmin extends Admin{
             ->select("a")
             ->from("UnifyWebBundle:Article","a")
             ->where("a.type=:type")
-            ->setParameter(':type',  \Unify\WebBundle\Entity\Article::$NEWS_TYPE);
+            ->setParameter(':type',  \Unify\WebBundle\Entity\Article::$PRODUCT_TYPE);
+        
         $listMapper
                 ->addIdentifier('id')
                 ->add('slug')
@@ -57,4 +39,6 @@ class ArticleAdmin extends Admin{
                 ->add('type', null, array('query_builder' => $query))
         ;
     }
+    
+    
 }

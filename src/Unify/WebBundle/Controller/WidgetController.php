@@ -11,7 +11,7 @@ class WidgetController extends BaseController{
      * @Template("UnifyWebBundle:Widget:latest_news.html.twig")
      */
     public function latestNewsAction($num = 3){
-        $news = $this->getArticleRepository()->findBy(array('type' => Article::$NEWS_TYPE), array("created_at" => "desc"), $num);
+        $news = $this->getArticleRepository()->findBy(array(), array("created_at" => "desc"), $num);
         return array('news' => $news);
     }
     
@@ -19,7 +19,7 @@ class WidgetController extends BaseController{
      * @Template("UnifyWebBundle:Widget:categories.html.twig")
      */
     public function categoriesAction(){
-        $categories = $this->getCategoryRepository()->findBy(array(), array("order" => "desc"));
+        $categories = $this->getCategoryRepository()->findBy(array(), array("show_order" => "desc"));
         return array('categories' => $categories);
     }
     

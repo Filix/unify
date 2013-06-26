@@ -7,13 +7,13 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
- * Entity\Article
+ * Entity\Product
  *
- * @ORM\Entity(repositoryClass="Unify\WebBundle\Repository\ArticleRepository")
- * @ORM\Table(name="articles")
+ * @ORM\Entity(repositoryClass="Unify\WebBundle\Repository\ProductRepository")
+ * @ORM\Table(name="products")
  * @UniqueEntity(fields={"slug"},message="Slug has existed.")
  */
-class Article
+class Product
 {
     /**
      * @ORM\Id
@@ -47,6 +47,11 @@ class Article
      */
     protected $img;
     
+  
+   /**
+     * @ORM\ManyToOne(targetEntity="Category", inversedBy="products")
+     * @ORM\JoinColumn(name="category_id", referencedColumnName="id", nullable=false)
+     */
     protected $category;
 
     public function __construct() {
@@ -203,4 +208,27 @@ class Article
         return $this->type;
     }
 
+
+    /**
+     * Set category
+     *
+     * @param \Unify\WebBundle\Entity\Category $category
+     * @return Product
+     */
+    public function setCategory(\Unify\WebBundle\Entity\Category $category)
+    {
+        $this->category = $category;
+    
+        return $this;
+    }
+
+    /**
+     * Get category
+     *
+     * @return \Unify\WebBundle\Entity\Category 
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
 }

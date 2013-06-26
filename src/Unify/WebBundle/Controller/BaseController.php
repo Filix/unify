@@ -11,6 +11,14 @@ class BaseController extends Controller{
     public function getArticleRepository(){
         return $this->getDoctrine()->getRepository('UnifyWebBundle:Article');
     }
+    
+    public function getProductRepository(){
+        return $this->getDoctrine()->getRepository('UnifyWebBundle:Product');
+    }
+    
+    public function getMessageRepository(){
+        return $this->getDoctrine()->getRepository('UnifyWebBundle:Message');
+    }
 }
 
 ?>
