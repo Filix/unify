@@ -27,12 +27,15 @@
                 <div class="container">
                     <h1><a href="{{ path('homepage') }}">Medical Center</a></h1>
                     <div class="nav"> 
+                        {% block menu %}
+                            {% set menu = 'homepage' %}
+                        {% endblock%}
                         <ul>
-                            <li class="m1"><a href="{{ path('homepage') }}" class="active"><span><b>Home</b></span></a></li>   
-                            <li class="m3"><a href="{{ path('about') }}"><span><b>About us</b></span></a></li>
-                            <li class="m2"><a href="{{ path('news_list') }}"><span><b>News</b></span></a></li>
-                            <li class="m4"><a href="{{ path('product_list') }}"><span><b>Products</b></span></a></li>
-                            <li class="m5 last"><a href="{{ path('contact') }}"><span><b>Contacts</b></span></a></li>
+                            <li class="m1"><a href="{{ path('homepage') }}" {% if menu is defined and menu == 'homepage' %}class="active"{% endif %}><span><b>Home</b></span></a></li>   
+                            <li class="m3"><a href="{{ path('about') }}"  {% if menu is defined and menu == 'about' %}class="active"{% endif %}><span><b>About us</b></span></a></li>
+                            <li class="m2"><a href="{{ path('news_list') }}" {% if menu is defined and menu == 'news' %}class="active"{% endif %}><span><b>News</b></span></a></li>
+                            <li class="m4"><a href="{{ path('product_list') }}" {% if menu is defined and menu == 'product' %}class="active"{% endif %}><span><b>Products</b></span></a></li>
+                            <li class="m5 last"><a href="{{ path('contact') }}" {% if menu is defined and menu == 'contact' %}class="active"{% endif %}><span><b>Contacts</b></span></a></li>
                         </ul>
                     </div>
                 </div>

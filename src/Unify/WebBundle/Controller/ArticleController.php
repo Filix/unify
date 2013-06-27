@@ -17,6 +17,7 @@ class ArticleController extends BaseController{
      */
     public function newsListAction($page)
     {
+        $this->get('twig')->addGlobal('menu', 'news');
         $news = $this->get('knp_paginator')
                 ->paginate($this->getArticleRepository()->findBy(array(), array('created_at' => 'desc')),
                         $page,
@@ -30,6 +31,7 @@ class ArticleController extends BaseController{
      */
     public function newsAction($slug)
     {
+        $this->get('twig')->addGlobal('menu', 'news');
         if(!$news = $this->getArticleRepository()->findOneBy(array('slug' => strtolower($slug)))){
             throw new NotFoundHttpException('Sorry! The page does not exist!');
         }
@@ -42,6 +44,7 @@ class ArticleController extends BaseController{
      */
     public function productListAction($page)
     {
+        $this->get('twig')->addGlobal('menu', 'product');
         $pagesize = 10;
         $return = array();
         $return['categories'] = $this->get('knp_paginator')
@@ -59,6 +62,7 @@ class ArticleController extends BaseController{
      */
     public function productCategoryAction($slug, $page)
     {
+        $this->get('twig')->addGlobal('menu', 'product');
         if(!$category = $this->getCategoryRepository()->findOneBy(array("slug" => strtolower($slug)))){
             throw new NotFoundHttpException('Sorry! The page does not exist!');
         }
@@ -76,6 +80,7 @@ class ArticleController extends BaseController{
      */
     public function productAction($slug)
     {
+        $this->get('twig')->addGlobal('menu', 'product');
         if(!$product = $this->getProductRepository()->findOneBy(array('slug' => strtolower($slug)))){
             throw new NotFoundHttpException('Sorry! The page does not exist!');
         }

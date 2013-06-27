@@ -15,6 +15,7 @@ class PageController extends BaseController
      */
     public function indexAction()
     {
+        $this->get('twig')->addGlobal('menu', 'homepage');
         $products = $this->getProductRepository()->getLatestProducts(4);
         return array('products' => $products);
     }
@@ -25,6 +26,7 @@ class PageController extends BaseController
      */
     public function aboutAction()
     {
+        $this->get('twig')->addGlobal('menu', 'about');
         return $this->render('UnifyWebBundle:Page:about.html.twig');
     }
     
@@ -34,8 +36,8 @@ class PageController extends BaseController
      */
     public function contactAction()
     {
+        $this->get('twig')->addGlobal('menu', 'contact');
         $message = new Message();
-        
         $form = $this->createFormBuilder($message)
                 ->add('name', 'text', array('label' => 'Your Name:', 'trim' => true))
                 ->add('email', 'email', array('label' => 'Your Email:', 'trim' => true))
