@@ -21,7 +21,9 @@
                     {% for product in products %}
                     <li>
                         <strong><a href="{{ path('product', {'slug': product.slug}) }}" target="_blank">{{ product.title }}</a></strong>
-                        {{ product.content|summary(150)}}
+                        <a href="{{ path('product', {'slug': product.slug}) }}" target="_blank">
+                            <img target="_blank" title="{{ product.title }}" src="{{ product.getImgPath() }}" style="border:1px solid #000; margin-right: 20px; width:150px; height:80px;">
+                        </a>
                     </li>
                     {% endfor %}
                 </ul>

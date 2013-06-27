@@ -19,6 +19,7 @@ class UnifyExtension extends \Twig_Extension {
     public function getFilters() {
         return array(
             'summary' => new \Twig_Filter_Method($this, 'summaryFilter'),
+            'merge_nl' => new \Twig_Filter_Method($this, 'mergeNLFilter'),
         );
     }
 
@@ -27,8 +28,17 @@ class UnifyExtension extends \Twig_Extension {
 //             'summary' => new \Twig_Function_Method($this, 'summaryFunction'),
         );
     }
-    
-    public function summaryFilter($string, $length = 100){
+
+    public function summaryFilter($string, $length = 100) {
         return substr($string, 0, $length) . '...';
     }
+
+    public function mergeNLFilter($sContent = NULL) {
+        if (!$sContent) {
+            return '';
+        }
+        $sContent = preg_replace('/(\r?\n){2,}/', "\r\n\r\n", $sContent);
+        return $sContent;
+    }
+
 }

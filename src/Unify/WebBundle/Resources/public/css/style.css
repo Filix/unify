@@ -164,6 +164,7 @@ textarea {
 .list li {
     line-height:1.538em;
     padding-top:20px;
+    padding-bottom: 10px;
 }
 .list li strong {
     color:#75dd12;
