@@ -5,11 +5,12 @@
    <!-- content -->
    <div class="section" id="content">
       <h2>{{ news.title }}</h2>
+      <i>{{ news.getCreatedAt.format('M d, Y H:i') }}</i><br><br>
       <div class="img-box">
           {% if news.img %}
-          <img src="{{ news.getImgPath() }}" class="imgb" alt="{{ news.title }}" />
+          <center><img src="{{ news.getImgPath() }}" class="imgb" alt="{{ news.title }}" /></center><br /><br />
           {% endif %}
-          {{ news.content }}
+          {{ news.content|nl2br }}
       </div>
    </div>
    <div class="clear"></div>

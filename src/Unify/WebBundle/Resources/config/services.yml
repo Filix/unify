@@ -1,3 +1,9 @@
 services:
     unify_image_upload:
         class: Unify\WebBundle\Util\UploadFileUtil
+    
+    unify_twig_extension:
+        class: Unify\WebBundle\Twig\UnifyExtension
+        tags:
+            - { name: twig.extension }
+        arguments: [@service_container]

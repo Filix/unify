@@ -7,9 +7,9 @@
       <ul class="list1">
          {% for n in news %}
          <li>
-             <img src="/bundles/unifyweb/images/3page-img1.jpg" class="imgb" alt="">
              <strong><a href="{{ path('news', {'slug': n.slug}) }}">{{ n.title }}</a></strong>
-             {{ n.content }}
+             <i>{{ n.getCreatedAt().format('M d, Y') }}</i><br>
+             {{ n.content|summary(150) }}
          </li>
          {% endfor %}
       </ul>

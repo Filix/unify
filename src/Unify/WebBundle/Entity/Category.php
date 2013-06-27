@@ -4,12 +4,15 @@ namespace Unify\WebBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Entity\Category
  *
  * @ORM\Entity(repositoryClass="Unify\WebBundle\Repository\CategoryRepository")
  * @ORM\Table(name="categories")
+ * @UniqueEntity(fields={"slug"},message="Slug has existed.")
  */
 class Category
 {
@@ -22,17 +25,24 @@ class Category
 
     /**
      * @ORM\Column(type="string", length=50, nullable=false)
+     * @Assert\NotNull(message="Name Required.")
      */
     protected $name;
     
     /**
      * @ORM\Column(type="string", length=50, nullable=false)
+     * @Assert\NotNull(message="Slug Required.")
+     * @Assert\Regex(
+     *     pattern="/^[a-zA-Z0-9\-_]+$/",
+     *     message="a-z,A-Z,0-9,-,_"
+     * )
      */
     protected $slug;
     
     /**
      * @ORM\Column(type="integer", nullable=false)
      * @ORM\OrderBy({"order" = "DESC"})
+     * @Assert\NotNull(message="Order Required.")
      */
     protected $show_order = 0;
     

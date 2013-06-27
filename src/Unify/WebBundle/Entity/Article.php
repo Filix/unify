@@ -4,6 +4,7 @@ namespace Unify\WebBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
@@ -24,16 +25,23 @@ class Article
 
     /**
      * @ORM\Column(type="string", length=50, nullable=false)
+     * @Assert\NotNull(message="Slug Required.")
+     * @Assert\Regex(
+     *     pattern="/^[a-zA-Z0-9\-_]+$/",
+     *     message="a-z,A-Z,0-9,-,_"
+     * )
      */
     protected $slug;
     
     /**
      * @ORM\Column(type="string", length=100, nullable=false)
+     * @Assert\NotNull(message="Title Required.")
      */
     protected $title;
     
     /**
-     * @ORM\Column(type="text", nullable=true)
+     * @ORM\Column(type="text", nullable=false)
+     * @Assert\NotNull(message="Content Required.")
      */
     protected $content;
     
@@ -186,7 +194,7 @@ class Article
     
     public function getImgPath()
     {
-        return '/uploads/news/' . $this->getImg();
+        return '/uploads/' . $this->getImg();
     }
 
     /**

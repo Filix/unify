@@ -5,9 +5,9 @@
          <ul class="news">
             {% for n in news %}
             <li>
-                <a href="{{ path('news', {'slug': n.slug }) }}">{{ n.getCreatedAt.format('Y-m-d') }}</a>
+                <a href="{{ path('news', {'slug': n.slug }) }}">{{ n.getCreatedAt.format('M d, Y') }}</a>
                 <strong>{{ n.title }}</strong>
-                {{ n.content }}
+                {{ n.content|summary}}
             </li>
             {% endfor %}
          </ul>

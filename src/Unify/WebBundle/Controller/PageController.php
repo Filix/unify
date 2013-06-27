@@ -7,15 +7,16 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Unify\WebBundle\Entity\Message;
 
-class PageController extends Controller
+class PageController extends BaseController
 {
     /**
      * @Route("/",name="homepage")
-     * @Template()
+     * @Template("UnifyWebBundle:Page:index.html.twig")
      */
     public function indexAction()
     {
-        return $this->render('UnifyWebBundle:Page:index.html.twig');
+        $products = $this->getProductRepository()->getLatestProducts(4);
+        return array('products' => $products);
     }
     
     /**

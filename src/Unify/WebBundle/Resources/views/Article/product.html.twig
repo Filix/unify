@@ -5,11 +5,12 @@
    <!-- content -->
    <div class="section" id="content">
       <h2>{{ product.title }}</h2>
+      <i>{{ product.getCreatedAt.format('M d, Y H:i') }}</i><br><br>
       <div class="img-box">
-          {% if news.img %}
-          <img src="{{ news.getImgPath() }}" class="imgb" alt="{{ news.title }}" />
+          {% if product.img %}
+          <center><img src="{{ product.getImgPath() }}" class="imgb" alt="{{ product.title }}" /></center><br /><br />
           {% endif %}
-          {{ product.content }}
+          {{ product.content|nl2br }}
       </div>
    </div>
    <div class="clear"></div>

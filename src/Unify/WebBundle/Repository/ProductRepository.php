@@ -12,4 +12,15 @@ use Doctrine\ORM\EntityRepository;
  */
 class ProductRepository extends EntityRepository
 {
+    public function getLatestProducts($limit){
+        return $this->getEntityManager()
+                ->createQueryBuilder()
+                ->select('p')
+                ->from('UnifyWebBundle:Product', 'p')
+                ->where('p.img is not null')
+                ->orderBy('p.created_at', 'desc')
+                ->getQuery()
+                ->setMaxResults($limit)
+                ->getResult();
+    }
 }

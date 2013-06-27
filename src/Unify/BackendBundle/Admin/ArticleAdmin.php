@@ -37,7 +37,7 @@ class ArticleAdmin extends Admin {
         $formMapper
                 ->add('title', NULL, array('label' => 'Title', 'required' => true))
                 ->add('slug', NULL, array('label' => 'Slug', 'required' => true))
-                ->add('content', NULL, array('label' => 'Content', 'required' => true))
+                ->add('content', NULL, array('label' => 'Content', 'required' => true, 'attr'=>array('rows'=>20)))
                 ->add('img', 'file', $options)
             ;
     }

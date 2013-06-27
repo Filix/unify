@@ -18,12 +18,12 @@ class ProductAdmin extends ArticleAdmin{
         $options = array('required' => false, 'data_class' => null);
         if (($subject = $this->getSubject()) && $subject->getImg()) {
             $path = $subject->getImg();
-            $options['help'] = '<img src="/uploads/' . $path . '" />';
+            $options['help'] = '<img width="200" src="/uploads/' . $path . '" />';
         }
         $formMapper
                 ->add('title', NULL, array('label' => 'Title', 'required' => true))
                 ->add('slug', NULL, array('label' => 'Slug', 'required' => true))
-                ->add('content', NULL, array('label' => 'Content', 'required' => true))
+                ->add('content', NULL, array('label' => 'Content', 'required' => true, 'attr'=>array('rows'=>20)))
                 ->add('img', 'file', $options)
                 ->add('category', null, array('label' => 'Category', 'required' => true))
             ;
