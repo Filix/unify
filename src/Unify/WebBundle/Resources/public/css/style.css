@@ -52,7 +52,7 @@ body {
 .header {
     position:relative;
     background:url(../images/header-bg1.jpg) no-repeat center top;
-    margin-bottom:-20px;
+    margin-bottom: 0px;
 }
 
 /* Content */
