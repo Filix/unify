@@ -477,3 +477,19 @@ h2 {
 #page4 .header { height:330px; background:url(../images/header-bg.jpg) no-repeat center top;}
 #page5 .header { height:330px; background:url(../images/header-bg.jpg) no-repeat center top;}
 #page6 .header { height:330px; background:url(../images/header-bg.jpg) no-repeat center top;}
+
+
+/*----- my -----*/
+li.product_table{
+    float: left;
+    margin-right: 50px;
+}
+
+li.product_table p{
+    font-weight: 800;
+    height:20px;
+    margin-top: 20px;
+    text-align: center;
+    overflow: hidden;
+    width:200px;
+}

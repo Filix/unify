@@ -2,31 +2,32 @@
 {% block main %}
 <div class="container">
     <!-- aside -->
-    {% render "UnifyWebBundle:Widget:latestNews" with {'num': 3} %}
+    {% render "UnifyWebBundle:Widget:latestNews" with {'num': 5} %}
     <!-- content -->
     <div class="section" id="content">
         <div class="wrapper">
-            <div class="article col-1">
+            <div class="article" style="margin-bottom: 40px;">
                 <h2>About Us</h2>
-                <img src="/bundles/unifyweb/images/1page-img.jpg" class="imgb" alt="" />
+                <img src="/bundles/unifyweb/images/1page-img.jpg" class="imgb" style="float:right; margin-bottom: 10px; margin-left: 10px;" alt="" />
                 <p class="p1">
                     <strong>Unify Medical</strong> Technology Co., Ltd. was founded in Nanjing, China with the goal to supply medical products with high quality, competitive price and excellent after-sales service.
-
                 </p>
                 <p class="p0">We welcome customers from all over the world visit our website or our company, and we assure you of our best quality products and services with competitive prices.Your cooperation with us will definitely create a win-win situation for both of us.</p>
+                <div class="clear"></div>
             </div>
-            <div class="article col-2">
+            <div class="article">
                 <h2>Products</h2>
                 <ul class="list">
                     {% for product in products %}
-                    <li>
-                        <strong><a href="{{ path('product', {'slug': product.slug}) }}" target="_blank">{{ product.title }}</a></strong>
+                    <li class="product_table">
                         <a href="{{ path('product', {'slug': product.slug}) }}" target="_blank">
-                            <img target="_blank" title="{{ product.title }}" src="{{ product.getImgPath() }}" style="border:1px solid #000; margin-right: 20px; width:150px; height:80px;">
+                            <img target="_blank" title="{{ product.title }}" src="{{ product.getImgPath() }}" style="border:1px solid #000; margin-right: 20px; width:200px; height:100px;">
                         </a>
+                        <p><a href="{{ path('product', {'slug': product.slug}) }}" title="{{ product.title }}" target="_blank">{{ product.title }}</a></p>
                     </li>
                     {% endfor %}
                 </ul>
+                <div class="clear"></div>
             </div>
         </div>
     </div>

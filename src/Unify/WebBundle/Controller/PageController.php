@@ -16,7 +16,7 @@ class PageController extends BaseController
     public function indexAction()
     {
         $this->get('twig')->addGlobal('menu', 'homepage');
-        $products = $this->getProductRepository()->getLatestProducts(4);
+        $products = $this->getProductRepository()->getLatestProducts(12);
         return array('products' => $products);
     }
     
