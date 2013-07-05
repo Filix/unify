@@ -45,7 +45,7 @@ class ArticleController extends BaseController{
     public function productListAction($page)
     {
         $this->get('twig')->addGlobal('menu', 'product');
-        $pagesize = 2;
+        $pagesize = 20;
         $return = array();
         $return['pager'] = $this->get('knp_paginator')
              ->paginate($this->getProductRepository()->getProducts(),
