@@ -47,7 +47,7 @@ class Category
     protected $show_order = 0;
     
     /**
-     * @ORM\OneToMany(targetEntity="Product", mappedBy="category")
+     * @ORM\OneToMany(targetEntity="Product", mappedBy="category", orphanRemoval=true)
      */
     protected $products;
     /**
@@ -55,7 +55,7 @@ class Category
      */
     public function __construct()
     {
-        $this->articles = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->products = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
     /**

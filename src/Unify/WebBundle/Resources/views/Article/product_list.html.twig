@@ -1,15 +1,22 @@
 {% extends "UnifyWebBundle::Layout.html.twig" %}
 {% block main %}
 <div class="container">
-   {% render "UnifyWebBundle:Widget:latestNews" with {'num': 3} %}
-   <!-- content -->
-   <div class="section" id="content">
-      <ul class="sitemap">
-          {% for category in categories %}
-         <li><a href="{{ path('product_category', {'slug': category.slug}) }}">{{ category.name }}</a></li>
-         {% endfor %}
-      </ul>
-   </div>
-   <div class="clear"></div>
+    {% render "UnifyWebBundle:Widget:categories"  %}
+    <div class="section" id="content">
+        <h2>Products</h2>
+        <ul class="list">
+                {% for product in pager %}
+                <li class="product_table">
+                    <a href="{{ path('product', {'slug': product.slug}) }}" target="_blank">
+                        <img target="_blank" title="{{ product.title }}" src="{{ product.getImgPath() }}" style="border:1px solid #000; margin-right: 20px; width:200px; height:100px;">
+                    </a>
+                    <p><a href="{{ path('product', {'slug': product.slug}) }}" title="{{ product.title }}" target="_blank">{{ product.title }}</a></p>
+                </li>
+               {% endfor %}
+        </ul>
+        <div class="clear"></div>
+        {{ pager.render()|raw }}
+    </div>
+    <div class="clear"></div>
 </div>
 {% endblock %}

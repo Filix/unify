@@ -23,4 +23,22 @@ class ProductRepository extends EntityRepository
                 ->setMaxResults($limit)
                 ->getResult();
     }
+    
+    public function getProducts(){
+        return $this->getEntityManager()
+                ->createQueryBuilder()
+                ->select('p')
+                ->from('UnifyWebBundle:Product', 'p')
+                ->where('p.img is not null')
+                ->orderBy('p.created_at', 'desc');
+    }
+    
+    public function getProductsByCategory(\Unify\WebBundle\Entity\Category $category){
+        return $query = $this->getEntityManager()
+                ->createQuery('SELECT p FROM UnifyWebBundle:Product p WHERE
+                    p.category = :category and p.img is not null
+                    ORDER BY p.created_at DESC')
+                ->setParameter('category', $category);
+    }
+    
 }

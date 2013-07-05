@@ -493,3 +493,27 @@ li.product_table p{
     overflow: hidden;
     width:200px;
 }
+
+.page-number{
+    padding: 15px;
+    text-align: left;
+}
+.page-number a,.page-number span{
+    display: inline-block;
+    height: 22px;
+    padding: 0 8px;
+    border: 1px solid #ccc;
+    margin: 0 5px;
+    color: #444;
+    line-height: 22px;
+    font-family: Tahoma;
+    text-decoration: none;
+}
+.page-number a:hover{
+    text-decoration: none;
+    color: #5DCDFF;
+}
+.page-number span{
+    color: #fff;
+    background-color: #5DCDFF;
+}

@@ -18,11 +18,11 @@ class ArticleController extends BaseController{
     public function newsListAction($page)
     {
         $this->get('twig')->addGlobal('menu', 'news');
-        $news = $this->get('knp_paginator')
+        $pager = $this->get('knp_paginator')
                 ->paginate($this->getArticleRepository()->findBy(array(), array('created_at' => 'desc')),
                         $page,
                         15);
-        return array('news' => $news);
+        return array('pager' => $pager);
     }
     
     /**
@@ -45,10 +45,10 @@ class ArticleController extends BaseController{
     public function productListAction($page)
     {
         $this->get('twig')->addGlobal('menu', 'product');
-        $pagesize = 10;
+        $pagesize = 2;
         $return = array();
-        $return['categories'] = $this->get('knp_paginator')
-             ->paginate($this->getCategoryRepository()->findBy(array(), array('show_order' => 'desc')),
+        $return['pager'] = $this->get('knp_paginator')
+             ->paginate($this->getProductRepository()->getProducts(),
                         $page,
                         $pagesize
              );
@@ -68,8 +68,8 @@ class ArticleController extends BaseController{
         }
         
         $return = array();
-        $return['products'] = $this->get('knp_paginator')
-                ->paginate($this->getProductRepository()->findBy(array('category' => $category)),
+        $return['pager'] = $this->get('knp_paginator')
+                ->paginate($this->getProductRepository()->findBy(array('category' => $category), array("created_at" => "desc")),
                         $page, 20);
         return $return;
     }

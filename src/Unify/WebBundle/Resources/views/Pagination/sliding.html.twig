@@ -3,7 +3,7 @@
     <p class="page-number">
         {%  set _first = pagesInRange.0 %}
         {% if previous is defined %}
-            <a class="page" href="{{ path(route, query|merge({(pageParameterName): previous})) }}">上一页</a>
+            <a class="page" href="{{ path(route, query|merge({(pageParameterName): previous})) }}">Pre</a>
         {% endif %}
 
         {% if first is defined and _first > first %}
@@ -33,7 +33,7 @@
         {% endif %}
 
         {% if next is defined %}
-            <a class="page" href="{{ path(route, query|merge({(pageParameterName): next})) }}">下一页</a>
+            <a class="page" href="{{ path(route, query|merge({(pageParameterName): next})) }}">Next</a>
         {% endif %}
     </p>
 {% endif %}

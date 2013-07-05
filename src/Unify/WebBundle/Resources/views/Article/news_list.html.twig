@@ -5,7 +5,7 @@
    <!-- content -->
    <div class="section" id="content">
       <ul class="list1">
-         {% for n in news %}
+         {% for n in pager %}
          <li>
              <strong><a href="{{ path('news', {'slug': n.slug}) }}">{{ n.title }}</a></strong>
              <i>{{ n.getCreatedAt().format('M d, Y') }}</i><br>
@@ -13,6 +13,8 @@
          </li>
          {% endfor %}
       </ul>
+      <div class="clear"></div>
+      {{ pager.render()|raw }}
    </div>
    <div class="clear"></div>
 </div>
