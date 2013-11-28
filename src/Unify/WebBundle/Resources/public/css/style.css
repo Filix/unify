@@ -24,10 +24,10 @@ time {
 /* Global properties ======================================================== */
 body { 
     background: #FFF; 
-    font-family:Arial, Helvetica, sans-serif;
+    font-family: Verdana,Arial, Helvetica, sans-serif;
     font-size:100%; 
     line-height:1em;
-    color:#979797;
+    color:#555;
 }
 html { 
     min-width:1000px;
@@ -65,7 +65,7 @@ body {
 /* Sidebar */
 .aside {
     float:left;
-    width:383px;
+    width:353px;
     position:relative;
     z-index:10;
 }
@@ -119,7 +119,7 @@ body {
 
 /*---- tailings ----*/
 .cont-bot {
-    background:url(../images/cont-bot.jpg) no-repeat left top;
+    background:url(../images/cont-bot.jpg) no-repeat -50px top;
     width:368px;
     height:199px;
     position:absolute;
@@ -154,9 +154,7 @@ textarea {
     font-weight:bold;
     font-size: 14px;
 }
-.news li a:hover {
-    text-decoration:underline;
-}
+
 
 .list {
     margin-top:-25px;
@@ -265,6 +263,10 @@ a {
 a:hover {
     text-decoration:none;
 }
+a.black{
+    color: #000;
+}
+
 
 h1 {
     position:absolute;
@@ -287,10 +289,12 @@ h2 {
     color:#000;
     font-size:23px;
     line-height:1.2em;
-    text-transform:uppercase;
     margin-bottom:20px;
     font-family: Tahoma, Geneva, sans-serif;
     font-weight:100;
+}
+h2:first-letter{
+        text-transform:uppercase;
 }
 
 
@@ -436,7 +440,7 @@ h2 {
 
 /*===== Sidebar =====*/
 .aside .inside {
-    padding:0 85px 180px 59px;
+    padding:0 40px 180px 10px;
 }
 
 /*===== footer =====*/

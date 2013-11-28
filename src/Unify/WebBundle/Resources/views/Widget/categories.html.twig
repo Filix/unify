@@ -5,7 +5,7 @@
          <ul class="news">
             {% for category in categories %}
             <li>
-                <strong><a href="{{ path('product_category', {'slug': category.slug }) }}">{{ category.name }}</a></strong>
+                <strong><a  class="black" href="{{ path('product_category', {'slug': category.slug }) }}">{{ category.name }}</a></strong>
             </li>
             {% endfor %}
          </ul>
